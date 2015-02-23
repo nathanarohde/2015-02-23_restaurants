@@ -17,7 +17,16 @@
           <h4>Restaurant List</h4>
           <ul>
             <li ng-repeat="item in restaurants">
+              <span ng-click="viewRestaurant = true" ng-hide="viewRestaurant">
               {{item.name}}
+              </span>
+                <span ng-show="viewRestaurant" ng-click="viewRestaurant = false">
+                  <p>{{item.name}}</p>
+                  <p>{{item.typeOfFood}}</p>
+                  <p>{{item.location}}</p>
+                  <p>{{item.priceRange}}</p>
+                  <p>{{item.rating}}</p>
+                </span>
             </li>
           </ul>
         </div>
