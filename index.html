@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en' ng-app="restaurantRoster">
+  <head>
+    <meta charset="UTF-8">
+    <title>Restaurant App</title>
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="js/RestaurantsController.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container" ng-controller="RestaurantsCtrl">
+      <!-- <div class='row'>
+      </div> -->
+      <div class='row'>
+        <div class='col-md-12'>
+          <h4>Restaurant List</h4>
+          <ul>
+            <li ng-repeat="item in restaurants">
+              {{item.name}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <form ng-submit="addRestaurant()" class="form-inline" role="form">
+            <div class="form-group">
+              <h5>Name</h5>
+              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Restaurant Name">
+              <h5>Type of Food</h5>
+              <input type="text" ng-model="restaurantTypeOfFood" class="form-control" placeholder="Restaurant Type of Food">
+              <h5>Location</h5>
+              <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Restaurant Location">
+              <h5>Price Range</h5>
+              <input type="text" ng-model="restaurantPriceRange" class="form-control" placeholder="Restaurant Price Range">
+              <h5>Rating</h5>
+              <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Restaurant Rating">
+              <br><br>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
