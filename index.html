@@ -15,7 +15,7 @@
           <h4>Search Restaurants</h4>
           <form class="form-inline" role="form">
             <div class="form-group">
-              <input ng-model="query" type="text" class="form-control" id="restaurantName" placeholder="Search">
+              <input ng-model="search" type="text" class="form-control" id="restaurantName" placeholder="Search">
             </div>
           </form>
         </div>
@@ -25,7 +25,8 @@
           <h4 ng-show="restaurants.length && filtered.length">Restaurant List</h4>
           <h4 ng-show="restaurants.length && !filtered.length">No Restaurants Match your Search</h4>
           <ul>
-            <li ng-repeat="item in filtered = (restaurants | filter:query)">
+            <!-- <li ng-repeat="item in filtered = (restaurants | filter:query)"> -->
+            <li ng-repeat='item in restaurants | filter: { name: search}'>
               <!-- find ng-controller functionality in order to connect hide list to submit new restaurant -->
               <span ng-click="viewRestaurant = true" ng-hide="viewRestaurant">
               {{item.name}}
