@@ -10,13 +10,23 @@
   </head>
   <body>
     <div class="container" ng-controller="RestaurantsCtrl">
-      <!-- <div class='row'>
-      </div> -->
+      <div class='row' ng-show="restaurants.length">
+        <div class="col-md-12">
+          <h4>Search Restaurants</h4>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <input ng-model="query" type="text" class="form-control" id="restaurantName" placeholder="Search">
+            </div>
+          </form>
+        </div>
+      </div>
       <div class='row'>
         <div class='col-md-12'>
-          <h4>Restaurant List</h4>
+          <h4 ng-show="restaurants.length && filtered.length">Restaurant List</h4>
+          <h4 ng-show="restaurants.length && !filtered.length">No Restaurants Match your Search</h4>
           <ul>
-            <li ng-repeat="item in restaurants">
+            <li ng-repeat="item in filtered = (restaurants | filter:query)">
+              <!-- find ng-controller functionality in order to connect hide list to submit new restaurant -->
               <span ng-click="viewRestaurant = true" ng-hide="viewRestaurant">
               {{item.name}}
               </span>
@@ -27,6 +37,8 @@
                   <p>{{item.priceRange}}</p>
                   <p>{{item.rating}}</p>
                 </span>
+          <!-- <button ng-click="viewRestaurant = false">Close List</button> -->
+          <!--  if button is moved outside li element it can no longer close viewRestaurant-->
             </li>
           </ul>
         </div>
@@ -34,15 +46,15 @@
           <form ng-submit="addRestaurant()" class="form-inline" role="form">
             <div class="form-group">
               <h5>Name</h5>
-              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Restaurant Name">
+              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Name">
               <h5>Type of Food</h5>
-              <input type="text" ng-model="restaurantTypeOfFood" class="form-control" placeholder="Restaurant Type of Food">
+              <input type="text" ng-model="restaurantTypeOfFood" class="form-control" placeholder="Type of Food">
               <h5>Location</h5>
-              <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Restaurant Location">
+              <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Location">
               <h5>Price Range</h5>
-              <input type="text" ng-model="restaurantPriceRange" class="form-control" placeholder="Restaurant Price Range">
+              <input type="text" ng-model="restaurantPriceRange" class="form-control" placeholder="Price Range">
               <h5>Rating</h5>
-              <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Restaurant Rating">
+              <input type="text" ng-model="restaurantRating" class="form-control" placeholder="Rating">
               <br><br>
               <button type="submit" class="btn btn-default">Submit</button>
             </div>
